@@ -77,6 +77,7 @@ The Algorithm:
 
 import numpy as np
 import random as rand
+import json
 from Puzzle import Puzzle
 
 
@@ -90,12 +91,14 @@ class Sudoku(Puzzle):
         self.corners = [
             (0, 3), (0, 6), (3, 0), (3, 3), (3, 6), (6, 0), (6, 3)
         ]
+        self.puz_json = None
 
         #logic in constructor allows the creation of a new board upon instantiation of a new object 
         # (if difficulty parameter is provided)
         if self.difficulty != None:
             self.puzzle = self.sudoku_array()
             self.hide_numbers()
+            self.puz_json = json.dumps(self.puzzle.tolist())
 
     def first_box(self):
 

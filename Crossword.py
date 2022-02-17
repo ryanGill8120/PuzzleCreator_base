@@ -38,6 +38,7 @@
 """
 import numpy as np
 import random as r
+import json
 from Puzzle import Puzzle
 
 class Crossword(Puzzle):
@@ -53,6 +54,7 @@ class Crossword(Puzzle):
         self.reserved = []
         self.skipped = []
         self.trys = 0
+        self.puz_json = None
         if self.word_bank:
             self.puz_size = int(len(self.word_bank) * 1.8)
             ls = self.longest_string(self.word_bank)
@@ -62,6 +64,7 @@ class Crossword(Puzzle):
                 (self.puz_size, self.puz_size), dtype=np.int
             )
             self.make_puzzle()
+            self.puz_json = json.dumps(self.puzzle.tolist())
 
 
     #places the first word horizontally and near the middle

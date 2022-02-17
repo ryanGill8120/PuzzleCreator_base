@@ -34,6 +34,7 @@
 
 import numpy as np
 import random as r
+import json
 
 from Puzzle import Puzzle
 
@@ -51,6 +52,7 @@ class WordSearch(Puzzle):
         self.reserved = []
         self.puz_size = 20
         self.long = 0
+        self.puz_json = None
         self.puzzle = np.random.randint(ord('A'), ord('Z'),
             size = (self.puz_size, self.puz_size))
 
@@ -61,6 +63,8 @@ class WordSearch(Puzzle):
                 if self.puz_size < self.long:
                     self.puz_size = self.long
                 self.puzzle = self.scramble()
+                self.puz_json = json.dumps(self.puzzle.tolist())
+
 
     #chooses a starting position and orientation for a word,
     #then simulates its indeces for validation, returns list of tuples

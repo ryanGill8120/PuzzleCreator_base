@@ -43,6 +43,7 @@
 
 import numpy as np
 import random as rand
+import json
 from Puzzle import Puzzle
 
 class Maze(Puzzle):
@@ -59,6 +60,7 @@ class Maze(Puzzle):
         self.remaining = set()
         self.sources = set()
         self.maze
+        self.maze_json = None
 
         # constructor logic that will handle instantiation errors
         #height and width must always be odd integers
@@ -79,6 +81,7 @@ class Maze(Puzzle):
 
         #makes a maze on instantiation
         self.create_maze()
+        self.maze_json = json.dumps(self.maze.tolist())
         
     #setup function that makes a clear maze for further alteration
     def init_maze(self):
